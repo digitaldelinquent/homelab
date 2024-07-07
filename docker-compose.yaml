@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  nginx-proxy:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/npm/data:/data
+      - /var/npm/letsencrypt:/etc/letsencrypt
+  pihole:
+    image: pihole/pihole:latest
+    restart: unless-stopped
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+    environment:
+      TZ: 'America/Los Angeles'
+    volumes:
+      - /var/pihole:/etc/pihole
+      - /var/pihole-dnsmasq:/etc/dnsmasq.d
+  syncthing:
+    image: syncthing/syncthing
+    restart: unless-stopped
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /var/syncthing:/var/syncthing
+networks:
+  default:
+    external: true
+    name: nginx-proxy_default
+
