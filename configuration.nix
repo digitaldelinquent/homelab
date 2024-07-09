@@ -28,8 +28,23 @@
     networking.defaultGateway = "192.168.1.1";
     networking.nameservers = ["1.1.1.1"];
 
-    # Enable the firewall.
-    networking.firewall.enable = true;
+    # Firewall configuration
+    networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [ 
+            22 # SSH
+            80 # HTTP
+            443 # HTTPS
+            53 # DNS
+            22000 # Syncthing
+        ];
+        allowedUDPPortRanges = [
+            53 # DNS
+            67 # Pi-Hole DHCP
+            22000 # Syncthing
+            21027 # Syncthing
+        ];
+    };
 
     # Set your time zone.
     time.timeZone = "America/Los_Angeles";
