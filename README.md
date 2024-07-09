@@ -3,13 +3,13 @@
 This repo contains the details to provision a simple homelab using nixos and
 docker! For this setup the following services are used:
 
-- Ngninx Proxy Manager - Used as a reverse proxy for all the services with an
+- Ngninx Proxy Manager: Used as a reverse proxy for all the services with an
   HTTP interface.
-- Netbird - Used for remote access into the homelab network.
-- Pi-Hole - Used for Ad-Blocking and a local DNS.
-- Syncthing - Used to sync files across devices and backup files.
-- VaultWarden - Used to maintain a backup copy of a bitwarden vault.
-- Uptime Kuma - Used to monitor services and their uptime.
+- Netbird: Used for remote access into the homelab network.
+- Pi-Hole: Used for Ad-Blocking and a local DNS.
+- Syncthing: Used to sync files across devices and backup files.
+- VaultWarden: Used to maintain a backup copy of a bitwarden vault.
+- Uptime Kuma: Used to monitor services and their uptime.
 
 This repo is still under construction, but will mainly be used to setup a home
 server to backup and sync files across devices via syncthing and to keep a local
