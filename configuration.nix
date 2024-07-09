@@ -89,6 +89,7 @@
     # Docker volume mounts
     systemd.tmpfiles.rules = [
         "d /var/syncthing 0755 admin docker"
+        "d /var/netbird 0755 admin docker"
         "d /var/npm 0755 admin docker"
         "d /var/npm/data 0755 admin docker"
         "d /var/npm/letsencrypt 0755 admin docker"
