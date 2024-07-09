@@ -5,7 +5,7 @@ docker! For this setup the following services are used:
 
 - Ngninx Proxy Manager - Used as a reverse proxy for all the services with an
   HTTP interface.
-- Tailscale (TBD) - Used for remote access into the homelab network.
+- Netbird - Used for remote access into the homelab network.
 - Pi-Hole - Used for Ad-Blocking and a local DNS.
 - Syncthing - Used to sync files across devices and backup files.
 - VaultWarden - Used to maintain a backup copy of a bitwarden vault.
@@ -27,7 +27,7 @@ Below are a list of items that still need work or have been completed.
       apply them to the system from gitlab.
 - [ ] Build a compose file to configure the services I use:
     - [x] Ngninx Proxy Manager
-    - [ ] Tailscale.
+    - [x] Netbird
     - [x] Pi-Hole
     - [x] Syncthing
     - [ ] VaultWarden
