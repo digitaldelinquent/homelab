@@ -8,6 +8,9 @@ services:
       - NET_ADMIN 
       - SYS_ADMIN 
       - SYS_RESOURCE  
+    # Uncomment if you are setting up the netbird service for the first time.
+    # environment:
+    #   - NB_SETUP_KEY=${NB_SETUP_KEY}
     volumes: 
       - /var/netbird:/etc/netbird 
   nginx-proxy:
