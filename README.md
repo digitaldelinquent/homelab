@@ -22,7 +22,7 @@ Below are a list of items that still need work or have been completed.
 - [ ] Use nix to configure the server with the following:
     - [x] Install Podman
     - [x] Static IP
-    - [ ] Firewall Rules
+    - [x] Firewall Rules
     - [ ] Setup a cron job that will automatically pull down changes and 
       apply them to the system from gitlab.
 - [ ] Build a compose file to configure the services I use:
