@@ -2,12 +2,12 @@ version: '3.8'
 services:
   netbird:
     image: netbirdio/netbird:latest
+    hostname: homelab
+    restart: unless-stopped
     cap_add: 
       - NET_ADMIN 
       - SYS_ADMIN 
       - SYS_RESOURCE  
-    environment: 
-      NB_SETUP_KEY: ${NB_SETUP_KEY} 
     volumes: 
       - /var/netbird:/etc/netbird 
   nginx-proxy:
