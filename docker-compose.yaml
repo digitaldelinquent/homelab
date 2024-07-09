@@ -7,7 +7,7 @@ services:
       - SYS_ADMIN 
       - SYS_RESOURCE  
     environment: 
-      NB_SETUP_KEY: ${NB_SETUP KEY} 
+      NB_SETUP_KEY: ${NB_SETUP_KEY} 
     volumes: 
       - /var/netbird:/etc/netbird 
   nginx-proxy:
