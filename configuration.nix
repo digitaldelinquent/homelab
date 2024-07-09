@@ -38,7 +38,7 @@
             53 # DNS
             22000 # Syncthing
         ];
-        allowedUDPPortRanges = [
+        allowedUDPPorts = [
             53 # DNS
             67 # Pi-Hole DHCP
             22000 # Syncthing
