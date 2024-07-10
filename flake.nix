@@ -1,7 +1,7 @@
 {
-    description = "Home Lab";
+    description = "Homelab";
     inputs = {
-        nixpkgs.url = "nixpkgs/nixos-23.05";
+        nixpkgs.url = "nixpkgs/nixos-23.11";
     };
     outputs = { self, nixpkgs, ... }:
         let
@@ -10,7 +10,7 @@
         nixosConfigurations = {
             homelab = lib.nixosSystem {
                 system = "x86_64-linux";
-                modules = [ ./configuration.nix ];
+                modules = [ ./hosts/homelab ];
             };
         };
     };
