@@ -28,12 +28,12 @@ in {
             if [ $LOCAL!=$REMOTE ];
             then
                 echo "| $(date) | Difference detected, pulling latest changes..."
-                git pull
-                && sudo nixos-rebuild switch --flake . --impure
-                && git -C ${homedir} add .
-                && git -C ${homedir} commit -m "updating flake.lock file"
-                && git -C ${homedir} push
-                && docker compose -f ${homedir} up -d
+                git pull &&
+                nixos-rebuild switch --flake . --impure &&
+                git -C ${homedir} add . &&
+                git -C ${homedir} commit -m "updating flake.lock file" &&
+                git -C ${homedir} push &&
+                docker compose -f ${homedir} up -d
             else
                 echo "| $(date) | No changes to be made"
             fi
