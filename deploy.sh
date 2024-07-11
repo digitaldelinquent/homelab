@@ -17,12 +17,12 @@ echo "| $(date) | Remote: $REMOTE"
 if [ $LOCAL!=$REMOTE ];
 then
     echo "| $(date) | Difference detected, pulling latest changes..."
-    git pull
-    && sudo nixos-rebuild switch --flake . --impure
-    && git add .
-    && git commit -m "updating flake.lock file"
-    && git push
-    && docker compose up -d
+    git pull &&
+    sudo nixos-rebuild switch --flake . --impure &&
+    git add . &&
+    git commit -m "updating flake.lock file" &&
+    git push &&
+    sudo docker compose up -d &&
 else
     echo "| $(date) | No changes to be made"
 fi
