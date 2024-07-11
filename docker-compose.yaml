@@ -28,7 +28,6 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 67:67/udp
     environment:
       TZ: 'America/Los Angeles'
     volumes:

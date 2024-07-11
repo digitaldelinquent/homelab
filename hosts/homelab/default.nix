@@ -40,7 +40,6 @@
         ];
         allowedUDPPorts = [
             53 # DNS
-            67 # Pi-Hole DHCP
             22000 # Syncthing
             21027 # Syncthing
         ];
