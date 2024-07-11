@@ -34,8 +34,6 @@ Below are a list of items that still need work or have been completed.
     - [x] Install Podman
     - [x] Static IP
     - [x] Firewall Rules
-    - [ ] Setup a cron job that will automatically pull down changes and 
-      apply them to the system from gitlab.
 - [ ] Build a compose file to configure the services I use:
     - [x] Ngninx Proxy Manager
     - [x] Netbird
