@@ -3,6 +3,7 @@ services:
   netbird:
     image: netbirdio/netbird:latest
     hostname: homelab
+    network_mode: host
     restart: unless-stopped
     cap_add: 
       - NET_ADMIN 
