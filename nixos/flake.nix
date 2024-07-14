@@ -8,7 +8,7 @@
             lib = nixpkgs.lib;
         in {
         nixosConfigurations.homelab = { 
-            lib.nixosSystem {
+            lib.nixosSystem = {
                 system = "x86_64-linux";
                 modules = [ ./configuration.nix ];
             };
