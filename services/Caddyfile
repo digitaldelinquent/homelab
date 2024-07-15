@@ -1,7 +1,7 @@
 pihole.digitaldelinquency.xyz {
-    reverse_proxy pihole:80
+        reverse_proxy pihole:80
 }
 
 syncthing.digitaldelinquency.xyz {
-    reverse_proxy syncthing:8384
+        reverse_proxy syncthing:8384
 }
