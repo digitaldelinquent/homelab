@@ -27,7 +27,6 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
       - /var/caddy/config:/config
-    command: xcaddy build --with github.com/caddy-dns/linode
   pihole:
     image: pihole/pihole:latest
     restart: unless-stopped
