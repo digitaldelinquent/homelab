@@ -14,15 +14,6 @@ services:
     #   - NB_SETUP_KEY=${NB_SETUP_KEY}
     volumes: 
       - /var/netbird:/etc/netbird 
-  # nginx-proxy:
-  #   image: jc21/nginx-proxy-manager:latest
-  #   restart: unless-stopped
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #   volumes:
-  #     - /var/npm/data:/data
-  #     - /var/npm/letsencrypt:/etc/letsencrypt
   caddy:
     image: caddy:2.8.4
     restart: unless-stopped
