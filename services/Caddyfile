@@ -4,7 +4,7 @@
     }
 
     @pihole host pihole.digitaldelinquency.xyz 
-    handle @pihole{
+    handle @pihole {
         reverse_proxy pihole:80
     }
 
