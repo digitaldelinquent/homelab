@@ -15,7 +15,7 @@ services:
     volumes: 
       - /var/netbird:/etc/netbird 
   caddy:
-    image: caddy:2.8.4
+    build: .
     restart: unless-stopped
     ports:
       - "80:80"
