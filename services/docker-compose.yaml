@@ -14,15 +14,26 @@ services:
     #   - NB_SETUP_KEY=${NB_SETUP_KEY}
     volumes: 
       - /var/netbird:/etc/netbird 
-  nginx-proxy:
-    image: jc21/nginx-proxy-manager:latest
+  # nginx-proxy:
+  #   image: jc21/nginx-proxy-manager:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - /var/npm/data:/data
+  #     - /var/npm/letsencrypt:/etc/letsencrypt
+  caddy:
+    image: caddy:2.8.4
     restart: unless-stopped
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
-      - /var/npm/data:/data
-      - /var/npm/letsencrypt:/etc/letsencrypt
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - /var/caddy/data:/data
+      - /var/caddy/config:/config
   pihole:
     image: pihole/pihole:latest
     restart: unless-stopped
@@ -53,5 +64,5 @@ services:
 networks:
   default:
     external: true
-    name: nginx-proxy_default
+    name: proxy
 
