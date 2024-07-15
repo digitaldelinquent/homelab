@@ -1,7 +1,15 @@
-pihole.digitaldelinquency.xyz {
-        reverse_proxy pihole:80
-}
+*.digitaldelinquency.xyz {
+    tls {
+        dns linode {env.LINODE_API_TOKEN}
+    }
 
-syncthing.digitaldelinquency.xyz {
+    @pihole host pihole.digitaldelinquency.xyz 
+    handle @pihole{
+        reverse_proxy pihole:80
+    }
+
+    @syncthing host syncthing.digitaldelinquency.xyz 
+    handle @syncthing {
         reverse_proxy syncthing:8384
+    }
 }
