@@ -1,5 +1,5 @@
 *.digitaldelinquency.xyz {
-    acme_dns linode {$LINODE_DNS_API_TOKEN}
+    acme_dns linode {$LINODE_API_TOKEN}
 
     @pihole host pihole.digitaldelinquency.xyz {
         reverse_proxy pihole:80
