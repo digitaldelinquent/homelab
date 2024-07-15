@@ -21,8 +21,6 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
-    environment:
-      - LINODE_API_TOKEN=${LINODE_API_TOKEN}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
