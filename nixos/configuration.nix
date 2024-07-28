@@ -107,6 +107,7 @@
         "d /var/caddy 0755 admin docker"
         "d /var/caddy/data 0755 admin docker"
         "d /var/caddy/config 0755 admin docker"
+        "d /var/vaultwarden 0755 admin docker"
         "d /var/pihole 0755 admin docker"
         "d /var/pihole-dnsmasq 0755 admin docker"
     ];
