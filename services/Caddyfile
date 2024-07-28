@@ -1,6 +1,6 @@
 *.digitaldelinquency.xyz {
     tls {
-        dns linode {env.LINODE_API_TOKEN}
+        dns linode {env.CLOUDFLARE_API_TOKEN}
     }
 
     @pihole host pihole.digitaldelinquency.xyz 

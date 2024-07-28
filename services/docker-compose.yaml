@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
     command: tunnel run
     environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
   caddy:
     build: .
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
       - 443:443
       - 443:443/udp
     environment:
-      LINODE_API_TOKEN: ${LINODE_API_TOKEN}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
