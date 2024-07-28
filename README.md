@@ -26,6 +26,13 @@ After that you will need to spin up the docker services using docker compose:
 
 ```
 sudo docker network create proxy
+sudo NB_SETUP_KEY=<NETBIRD_KEY> docker compose up -d
+```
+
+or if netbird container has already been added to the netbird network:
+
+```
+sudo docker network create proxy
 sudo docker compose up -d
 ```
 
