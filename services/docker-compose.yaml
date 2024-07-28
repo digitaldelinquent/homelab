@@ -11,6 +11,12 @@ services:
       - SYS_RESOURCE  
     volumes: 
       - /var/netbird:/etc/netbird 
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
   caddy:
     build: .
     restart: unless-stopped
