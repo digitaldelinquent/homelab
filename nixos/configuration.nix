@@ -85,6 +85,7 @@
         vim
         wget
         git
+        docker
         docker-compose
     ];
 
