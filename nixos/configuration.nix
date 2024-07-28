@@ -95,12 +95,6 @@
     # Docker config
     virtualisation.docker.enable = true;
 
-    # Docker enable rootless
-    virtualisation.docker.rootless = {
-        enable = true;
-        setSocketVariable = true;
-    };
-
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # This value determines the NixOS release from which the default
