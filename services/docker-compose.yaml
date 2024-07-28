@@ -9,20 +9,19 @@ services:
       - NET_ADMIN 
       - SYS_ADMIN 
       - SYS_RESOURCE  
-    # Uncomment if you are setting up the netbird service for the first time.
-    # environment:
-    #   - NB_SETUP_KEY=${NB_SETUP_KEY}
+    environment:
+      NB_SETUP_KEY: ${NB_SETUP_KEY}
     volumes: 
       - /var/netbird:/etc/netbird 
   caddy:
     build: .
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+      - 80:80
+      - 443:443
+      - 443:443/udp
     environment:
-      - LINODE_API_TOKEN=${LINODE_API_TOKEN}
+      LINODE_API_TOKEN: ${LINODE_API_TOKEN}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
@@ -50,10 +49,17 @@ services:
       - 22000:22000/udp
       - 21027:21027/udp
     environment:
-      - PUID=1000
-      - PGID=1000
+      PUID: 1000
+      PGID: 1000
     volumes:
       - /var/syncthing:/var/syncthing
+  vaultwarden:
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    ports: 
+      - 80:80
+    volumes: 
+      - /var/vaultwarden:/data
 networks:
   default:
     external: true

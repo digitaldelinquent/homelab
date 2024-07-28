@@ -12,4 +12,9 @@
     handle @syncthing {
         reverse_proxy syncthing:8384
     }
+
+    @vaultw host vaultw.digitaldelinquency.xyz 
+    handle @vaultw {
+        reverse_proxy vaultwarden:80
+    }
 }
