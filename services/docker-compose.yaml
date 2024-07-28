@@ -54,8 +54,6 @@ services:
   vaultwarden:
     image: vaultwarden/server:latest
     restart: unless-stopped
-    ports: 
-      - 80:80
     volumes: 
       - /var/vaultwarden:/data
 networks:
