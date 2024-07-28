@@ -100,18 +100,6 @@
         setSocketVariable = true;
     };
 
-    # Docker volume mounts
-    systemd.tmpfiles.rules = [
-        "d /var/syncthing 0755 admin docker"
-        "d /var/netbird 0755 admin docker"
-        "d /var/caddy 0755 admin docker"
-        "d /var/caddy/data 0755 admin docker"
-        "d /var/caddy/config 0755 admin docker"
-        "d /var/vaultwarden 0755 admin docker"
-        "d /var/pihole 0755 admin docker"
-        "d /var/pihole-dnsmasq 0755 admin docker"
-    ];
-
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # This value determines the NixOS release from which the default
