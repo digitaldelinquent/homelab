@@ -41,6 +41,23 @@ services:
     volumes:
       - /var/pihole:/etc/pihole
       - /var/pihole-dnsmasq:/etc/dnsmasq.d
+  restic:
+    image: mazzolino/restic
+    restart: unless-stopped
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      RESTIC_REPOSITORY: ${RESTIC_REPOSITORY}
+      RESTIC_PASSWORD: ${RESTIC_PASSWORD}
+      RESTIC_BACKUP_SOURCES: /backup
+      RESTIC_BACKUP_ARGS: >-
+        --tag docker-volumes
+        --verbose
+      BACKUP_CRON: "0 30 3 * * *"
+      TZ: "America/Los_Angeles"
+    volumes: 
+      - /var/vaultwarden:/backup/vaultw
+      - /var/syncthing:/backup/syncthing
   syncthing:
     image: syncthing/syncthing
     restart: unless-stopped
