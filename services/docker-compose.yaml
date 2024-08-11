@@ -79,6 +79,8 @@ services:
   vaultwarden:
     image: vaultwarden/server:latest
     restart: unless-stopped
+    environment:
+      ADMIN_TOKEN: ${VAULTW_ADMIN_TOKEN}
     volumes: 
       - /var/vaultwarden:/data
 networks:
