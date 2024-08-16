@@ -9,7 +9,6 @@ docker! For this setup the following services are used:
 - Pi-Hole: Used for Ad-Blocking and a local DNS.
 - Syncthing: Used to sync files across devices and backup files.
 - VaultWarden: Used to maintain a backup copy of a bitwarden vault.
-- Uptime Kuma: Used to monitor services and their uptime.
 
 This repo is still under construction, but will mainly be used to setup a home
 server to backup and sync files across devices via syncthing and to keep a local
@@ -35,20 +34,3 @@ or if netbird container has already been added to the netbird network:
 docker network create proxy
 docker compose up -d
 ```
-
-## To-Do's
-
-Below are a list of items that still need work or have been completed.
-
-- [ ] Use nix to configure the server with the following:
-    - [x] Install Podman
-    - [x] Static IP
-    - [x] Firewall Rules
-- [ ] Build a compose file to configure the services I use:
-    - [x] Caddy
-    - [x] Netbird
-    - [x] Pi-Hole
-    - [x] Syncthing
-    - [ ] VaultWarden
-    - [ ] Uptime Kuma.
-- [x] Update readme with provisioning instructions.
