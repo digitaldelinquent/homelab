@@ -90,7 +90,14 @@
     ];
 
     # List services that you want to enable:
-    services.openssh.enable = true;
+    services.openssh = {
+        enable = true;
+
+        # require public key authentication for better security
+        settings.PasswordAuthentication = false;
+        settings.KbdInteractiveAuthentication = false;
+        settings.PermitRootLogin = "no";
+    }
 
     # Docker config
     virtualisation.docker.enable = true;
