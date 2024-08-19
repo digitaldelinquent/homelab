@@ -19,7 +19,14 @@ copy of a bitwarden vault.
 In order to provision your server with the same config simply clone this repo
 and run the following command:
 
-`sudo nixos-rebuild switch --flake . --impure`
+`sudo nixos-rebuild switch --flake .`
+
+> **NOTE**: This uses the UUIDs of my disks, please copy your hardware config
+> after you installed nixos into this repo and delete the existing
+> `hardware-configuration.nix`. After that the git tree will be dirty, but you
+> should be able to build the system without your install being borked. You
+> could also just copy your drive UUIDs into the hardware-configuration.nix file 
+> and that should work too.
 
 After that you will need to spin up the docker services using docker compose:
 
