@@ -1,5 +1,10 @@
 # Homelab
 
+(**ARCHIVED REPO**)
+
+> **NOTE**: THIS REPO HAS BEEN ARCHIVED AS ALL CONTENTS HAVE BEEN MOVED TO
+> .dotfiles REPO.
+
 This repo contains the details to provision a simple homelab using nixos and
 docker! For this setup the following services are used:
 
