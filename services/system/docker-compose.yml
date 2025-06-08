@@ -55,23 +55,11 @@ services:
       - /var/pihole:/backup/pihole
       - /var/pihole-dnsmasq:/backup/pihole-dnsmasq
       - /var/uptime-kuma:/backup/uptime-kuma
-  beszel:
-    image: henrygd/beszel:latest
-    restart: unless-stopped
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
     volumes:
-      - /var/beszel/data:/beszel_data
-      - /var/beszel/socket:/beszel_socket
-  beszel-agent:
-    image: henrygd/beszel-agent:latest
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - /var/beszel/socket:/beszel_socket
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      LISTEN: /beszel_socket/beszel.sock
-      # Do not remove quotes around the key
-      KEY: ${BESZEL_SSH_KEY}
+      - /var/uptime-kuma:/app/data
+    restart: unless-stopped 
 networks:
   default:
     external: true

@@ -11,7 +11,7 @@ and docker! For this setup the following services are used:
 - Pi-Hole: Used for Ad-Blocking and a local DNS.
 - Syncthing: Used to sync files across devices and backup files.
 - VaultWarden: Used to maintain a backup copy of a bitwarden vault.
-- Beszel: Monitoring
+- Uptime Kuma: Application Uptime Monitoring
 
 In order to provision your server with the same config simply clone this repo
 and run the following command:

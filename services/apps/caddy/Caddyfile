@@ -8,6 +8,11 @@
         reverse_proxy pihole:80
     }
 
+    @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
+    handle @uptime-kuma {
+        reverse_proxy beszel:8090
+    }
+
     @syncthing host syncthing.digitaldelinquency.xyz 
     handle @syncthing {
         reverse_proxy syncthing:8384
@@ -26,10 +31,5 @@
     @cyberchef host cyberchef.digitaldelinquency.xyz 
     handle @cyberchef {
         reverse_proxy cyberchef:80
-    }
-
-    @beszel host beszel.digitaldelinquency.xyz 
-    handle @beszel {
-        reverse_proxy beszel:8090
     }
 }
