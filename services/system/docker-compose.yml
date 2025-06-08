@@ -57,14 +57,12 @@ services:
       - /var/uptime-kuma:/backup/uptime-kuma
   beszel:
     image: henrygd/beszel:latest
-    container_name: beszel
     restart: unless-stopped
     volumes:
       - /var/beszel/data:/beszel_data
       - /var/beszel/socket:/beszel_socket
   beszel-agent:
     image: henrygd/beszel-agent:latest
-    container_name: beszel-agent
     restart: unless-stopped
     network_mode: host
     volumes:
