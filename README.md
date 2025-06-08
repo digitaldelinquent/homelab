@@ -16,7 +16,7 @@ and docker! For this setup the following services are used:
 In order to provision your server with the same config simply clone this repo
 and run the following command:
 
-`sudo nixos-rebuild switch --flake .#homelab`
+`sudo nixos-rebuild switch --flake .`
 
 > **NOTE** This uses the UUIDs of my disks, please copy your hardware config
 > after you installed nixos into this repo and delete the existing
