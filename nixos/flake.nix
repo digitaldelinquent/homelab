@@ -12,9 +12,8 @@
             lib = nixpkgs.lib;
         in {
         nixosConfigurations.homelab = lib.nixosSystem {
-                inherit system;
-                modules = [ ./configuration.nix ];
-            };
+            inherit system;
+            modules = [ ./configuration.nix ];
         };
     };
 
