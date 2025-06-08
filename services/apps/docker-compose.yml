@@ -1,5 +1,18 @@
 version: '3.8'
 services:
+  caddy:
+    build: ./caddy
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    environment:
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /var/caddy/data:/data
+      - /var/caddy/config:/config
   syncthing:
     image: syncthing/syncthing:latest
     restart: unless-stopped
