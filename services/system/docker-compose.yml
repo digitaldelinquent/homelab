@@ -55,11 +55,27 @@ services:
       - /var/pihole:/backup/pihole
       - /var/pihole-dnsmasq:/backup/pihole-dnsmasq
       - /var/uptime-kuma:/backup/uptime-kuma
-  uptime-kuma:
-    image: louislam/uptime-kuma:latest
-    volumes:
-      - /var/uptime-kuma:/app/data
+  beszel:
+    image: henrygd/beszel:latest
+    container_name: beszel
     restart: unless-stopped
+    ports:
+      - 8090:8090
+    volumes:
+      - ./beszel_data:/beszel_data
+      - ./beszel_socket:/beszel_socket
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./beszel_socket:/beszel_socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LISTEN: /beszel_socket/beszel.sock
+      # Do not remove quotes around the key
+      KEY: 'UPDATE WITH YOUR PUBLIC KEY (copy from "Add system" dialog)'
 networks:
   default:
     external: true

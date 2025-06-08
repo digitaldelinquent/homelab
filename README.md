@@ -4,8 +4,6 @@ The following section details how to provision a simple homelab using nixos
 and docker! For this setup the following services are used:
 
 - Watchtower: Watches for updates of the images used by the below services.
-- Portainer: For container montioring and gitops deployments of the docker
-  compose files in this repo.
 - Caddy: Used as a reverse proxy for all the services with an
   HTTP interface.
 - Netbird: Used for remote access into the homelab network.
@@ -13,7 +11,7 @@ and docker! For this setup the following services are used:
 - Pi-Hole: Used for Ad-Blocking and a local DNS.
 - Syncthing: Used to sync files across devices and backup files.
 - VaultWarden: Used to maintain a backup copy of a bitwarden vault.
-- Uptime Kuma: Application Uptime Monitoring
+- Beszel: Monitoring
 
 In order to provision your server with the same config simply clone this repo
 and run the following command:
