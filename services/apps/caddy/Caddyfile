@@ -10,7 +10,7 @@
 
     @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
     handle @uptime-kuma {
-        reverse_proxy beszel:8090
+        reverse_proxy uptime-kuma:3001
     }
 
     @syncthing host syncthing.digitaldelinquency.xyz 
