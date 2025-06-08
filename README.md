@@ -1,32 +1,26 @@
 # Homelab
 
-(**ARCHIVED REPO**)
+The following section details how to provision a simple homelab using nixos 
+and docker! For this setup the following services are used:
 
-> **NOTE**: THIS REPO HAS BEEN ARCHIVED AS ALL CONTENTS HAVE BEEN MOVED TO
-> .dotfiles REPO.
-
-This repo contains the details to provision a simple homelab using nixos and
-docker! For this setup the following services are used:
-
+- Watchtower: Watches for updates of the images used by the below services.
+- Portainer: For container montioring and gitops deployments of the docker
+  compose files in this repo.
 - Caddy: Used as a reverse proxy for all the services with an
   HTTP interface.
 - Netbird: Used for remote access into the homelab network.
+- CloudFlare Tunnels: To make certain sites accessible to the internet.
 - Pi-Hole: Used for Ad-Blocking and a local DNS.
 - Syncthing: Used to sync files across devices and backup files.
 - VaultWarden: Used to maintain a backup copy of a bitwarden vault.
-
-This repo is still under construction, but will mainly be used to setup a home
-server to backup and sync files across devices via syncthing and to keep a local
-copy of a bitwarden vault.
-
-## Provisioning
+- Uptime Kuma: Application Uptime Monitoring
 
 In order to provision your server with the same config simply clone this repo
 and run the following command:
 
-`sudo nixos-rebuild switch --flake .`
+`sudo nixos-rebuild switch --flake .#homelab`
 
-> **NOTE**: This uses the UUIDs of my disks, please copy your hardware config
+> **NOTE** This uses the UUIDs of my disks, please copy your hardware config
 > after you installed nixos into this repo and delete the existing
 > `hardware-configuration.nix`. After that the git tree will be dirty, but you
 > should be able to build the system without your install being borked. You

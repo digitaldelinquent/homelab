@@ -1,5 +1,9 @@
 version: '3.8'
 services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   netbird:
     image: netbirdio/netbird:latest
     hostname: homelab
@@ -12,37 +16,13 @@ services:
     volumes: 
       - /var/netbird:/etc/netbird 
   cloudflare-tunnel:
-    image: cloudflare/cloudflared
+    image: cloudflare/cloudflared:latest
     restart: unless-stopped
     command: tunnel run
     environment:
       TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
-  caddy:
-    build: .
-    restart: unless-stopped
-    ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
-    environment:
-      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - /var/caddy/data:/data
-      - /var/caddy/config:/config
-  pihole:
-    image: pihole/pihole:latest
-    restart: unless-stopped
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-    environment:
-      TZ: 'America/Los Angeles'
-    volumes:
-      - /var/pihole:/etc/pihole
-      - /var/pihole-dnsmasq:/etc/dnsmasq.d
   restic:
-    image: mazzolino/restic
+    image: mazzolino/restic:latest
     restart: unless-stopped
     environment:
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
@@ -60,29 +40,15 @@ services:
     volumes: 
       - /var/vaultwarden:/backup/vaultw
       - /var/syncthing:/backup/syncthing
-  syncthing:
-    image: syncthing/syncthing
-    restart: unless-stopped
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
-      - 1.0.0.1
-    ports:
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
-    environment:
-      PUID: 1000
-      PGID: 1000
+      - /var/portainer:/backup/portainer
+      - /var/pihole:/backup/pihole
+      - /var/pihole-dnsmasq:/backup/pihole-dnsmasq
+      - /var/uptime-kuma:/backup/uptime-kuma
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
     volumes:
-      - /var/syncthing:/var/syncthing
-  vaultwarden:
-    image: vaultwarden/server:latest
+      - /var/uptime-kuma:/app/data
     restart: unless-stopped
-    environment:
-      ADMIN_TOKEN: ${VAULTW_ADMIN_TOKEN}
-    volumes: 
-      - /var/vaultwarden:/data
 networks:
   default:
     external: true

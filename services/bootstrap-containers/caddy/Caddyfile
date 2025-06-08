@@ -1,0 +1,40 @@
+*.digitaldelinquency.xyz {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+
+    @portainer host portainer.digitaldelinquency.xyz 
+    handle @portainer {
+        reverse_proxy portainer:9000
+    }
+
+    @pihole host pihole.digitaldelinquency.xyz 
+    handle @pihole {
+        reverse_proxy pihole:80
+    }
+
+    @syncthing host syncthing.digitaldelinquency.xyz 
+    handle @syncthing {
+        reverse_proxy syncthing:8384
+    }
+
+    @vaultw host vaultw.digitaldelinquency.xyz 
+    handle @vaultw {
+        reverse_proxy vaultwarden:80
+    }
+
+    @it-tools host it-tools.digitaldelinquency.xyz 
+    handle @it-tools {
+        reverse_proxy it-tools:80
+    }
+
+    @cyberchef host cyberchef.digitaldelinquency.xyz 
+    handle @cyberchef {
+        reverse_proxy cyberchef:80
+    }
+
+    @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
+    handle @uptime-kuma {
+        reverse_proxy uptime-kuma:3001
+    }
+}

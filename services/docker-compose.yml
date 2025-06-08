@@ -1,0 +1,5 @@
+version: '3.8'
+name: homelab-services
+include:
+  - path: 'apps/docker-compose.yml'
+  - path: 'system/docker-compose.yml'

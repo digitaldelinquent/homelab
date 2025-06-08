@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    restart: unless-stopped
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    environment:
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /var/syncthing:/var/syncthing
+  vaultwarden:
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    environment:
+      ADMIN_TOKEN: ${VAULTW_ADMIN_TOKEN}
+    volumes: 
+      - /var/vaultwarden:/data
+  it-tools:
+    image: ghcr.io/corentinth/it-tools:latest
+    restart: unless-stopped
+  cyberchef:
+    image: ghcr.io/gchq/cyberchef:latest
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+    name: proxy
+

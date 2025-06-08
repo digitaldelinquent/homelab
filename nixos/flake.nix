@@ -1,15 +1,20 @@
 {
-    description = "Homelab";
+    description = "NixOS Configs";
     inputs = {
-        nixpkgs.url = "nixpkgs/nixos-23.11";
+        nixpkgs.url = "nixpkgs/nixos-24.11";
+        ghostty = {
+            url = "github:ghostty-org/ghostty";
+        };
     };
-    outputs = { self, nixpkgs, ... }:
+    outputs = { self, nixpkgs, home-manager, ghostty, ... }@inputs:
         let
+            system = "x86_64-linux";
             lib = nixpkgs.lib;
         in {
         nixosConfigurations.homelab = lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [ ./configuration.nix ];
+                inherit system;
+                modules = [ ./configuration.nix ];
+            };
         };
     };
 
