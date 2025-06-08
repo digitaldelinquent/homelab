@@ -30,6 +30,6 @@
 
     @beszel host beszel.digitaldelinquency.xyz 
     handle @beszel {
-        reverse_proxy uptime-kuma:8090
+        reverse_proxy beszel:8090
     }
 }
