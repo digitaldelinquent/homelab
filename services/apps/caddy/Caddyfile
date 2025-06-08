@@ -3,11 +3,6 @@
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
 
-    @portainer host portainer.digitaldelinquency.xyz 
-    handle @portainer {
-        reverse_proxy portainer:9000
-    }
-
     @pihole host pihole.digitaldelinquency.xyz 
     handle @pihole {
         reverse_proxy pihole:80
@@ -33,8 +28,8 @@
         reverse_proxy cyberchef:80
     }
 
-    @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
-    handle @uptime-kuma {
-        reverse_proxy uptime-kuma:3001
+    @beszel host beszel.digitaldelinquency.xyz 
+    handle @beszel {
+        reverse_proxy uptime-kuma:8090
     }
 }
