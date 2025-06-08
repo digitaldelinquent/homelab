@@ -71,7 +71,7 @@ services:
     environment:
       LISTEN: /beszel_socket/beszel.sock
       # Do not remove quotes around the key
-      KEY: 'UPDATE WITH YOUR PUBLIC KEY (copy from "Add system" dialog)'
+      KEY: ${BESZEL_SSH_KEY}
 networks:
   default:
     external: true
