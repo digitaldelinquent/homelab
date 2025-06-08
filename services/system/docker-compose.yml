@@ -66,7 +66,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - /var/bezel/socket:/beszel_socket
+      - /var/beszel/socket:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
