@@ -2,11 +2,8 @@
     description = "NixOS Configs";
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-24.11";
-        ghostty = {
-            url = "github:ghostty-org/ghostty";
-        };
     };
-    outputs = { self, nixpkgs, home-manager, ghostty, ... }@inputs:
+    outputs = { self, nixpkgs, ... }@inputs:
         let
             system = "x86_64-linux";
             lib = nixpkgs.lib;
