@@ -43,6 +43,7 @@ services:
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
+      - /var/syncthing/Media:/syncthing:rw
     depends_on:
       - redis
       - database
