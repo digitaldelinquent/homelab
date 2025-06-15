@@ -23,13 +23,8 @@
         reverse_proxy vaultwarden:80
     }
 
-    @it-tools host it-tools.digitaldelinquency.xyz 
-    handle @it-tools {
-        reverse_proxy it-tools:80
-    }
-
-    @cyberchef host cyberchef.digitaldelinquency.xyz 
-    handle @cyberchef {
-        reverse_proxy cyberchef:80
+    @immich host immich.digitaldelinquency.xyz 
+    handle @immich {
+        reverse_proxy immich-server:2283
     }
 }
