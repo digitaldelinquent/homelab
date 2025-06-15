@@ -38,6 +38,8 @@ services:
       - /var/vaultwarden:/data
   immich-server:
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
