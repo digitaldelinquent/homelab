@@ -42,8 +42,8 @@ services:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
     depends_on:
-      - immich-redis
-      - immich-database
+      - redis
+      - database
     restart: always
     healthcheck:
       disable: false
