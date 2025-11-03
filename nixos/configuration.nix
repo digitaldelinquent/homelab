@@ -121,6 +121,9 @@
             settings.KbdInteractiveAuthentication = false;
             settings.PermitRootLogin = "no";
         };
+        
+        # Enable tailscale
+        tailscale.enable = true;
 
         # Enable mullvad VPN
         mullvad-vpn.enable = true;

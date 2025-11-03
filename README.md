@@ -6,7 +6,7 @@ and docker! For this setup the following services are used:
 - Watchtower: Watches for updates of the images used by the below services.
 - Caddy: Used as a reverse proxy for all the services with an
   HTTP interface.
-- Netbird: Used for remote access into the homelab network.
+- Tailscale: Used for remote access into the homelab network.
 - CloudFlare Tunnels: To make certain sites accessible to the internet.
 - Pi-Hole: Used for Ad-Blocking and a local DNS.
 - Syncthing: Used to sync files across devices and backup files.
@@ -26,13 +26,6 @@ and run the following command:
 > and that should work too.
 
 After that you will need to spin up the docker services using docker compose:
-
-```
-docker network create proxy
-NB_SETUP_KEY=<NETBIRD_KEY> docker compose up -d
-```
-
-or if netbird container has already been added to the netbird network:
 
 ```
 docker network create proxy
