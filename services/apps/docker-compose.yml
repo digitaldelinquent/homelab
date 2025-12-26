@@ -40,7 +40,7 @@ configs:
     content: |
       [global]
       e2dsa
-      rproxy: -1
+      rproxy: 1
 
       [accounts]
       admin:${COPYPARTY_ADMIN_PASSWORD}
