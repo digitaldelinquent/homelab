@@ -77,22 +77,6 @@ services:
         target: /cfg/config.conf
     volumes:
       - /var/copyparty:/data
-  syncthing:
-    image: syncthing/syncthing:latest
-    restart: unless-stopped
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
-      - 1.0.0.1
-    ports:
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
-    environment:
-      PUID: 1000
-      PGID: 1000
-    volumes:
-      - /var/syncthing:/var/syncthing
   vaultwarden:
     image: vaultwarden/server:latest
     restart: unless-stopped
@@ -107,8 +91,7 @@ services:
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
-      - /var/syncthing/Media:/syncthing/Media:rw
-      - /var/syncthing/Camera:/syncthing/Camera:rw
+      - /var/copyparty/Media:/syncthing/Media:rw
     depends_on:
       - redis
       - database
