@@ -72,7 +72,7 @@ services:
     restart: unless-stopped
     environment:
       COPYPARTY_ADMIN_PASSWORD: ${COPYPARTY_ADMIN_PASSWORD}
-    config:
+    configs:
       - source: copyparty-config
         target: /cfg/config.conf
     volumes:
