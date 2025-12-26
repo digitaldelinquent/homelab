@@ -64,7 +64,6 @@ services:
       - source: caddy-config
         target: /etc/caddy/Caddyfile
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
       - /var/caddy/config:/config
   copyparty:
