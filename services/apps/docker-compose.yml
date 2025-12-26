@@ -47,7 +47,7 @@ configs:
       admin: ${COPYPARTY_ADMIN_PASSWORD}
 
       [/]
-      /w
+      /data
       accs:
         rw: admin
 
@@ -76,7 +76,7 @@ services:
       - source: copyparty-config
         target: /cfg/config.conf
     volumes:
-      - /var/copyparty:/w
+      - /var/copyparty:/data
   syncthing:
     image: syncthing/syncthing:latest
     restart: unless-stopped
