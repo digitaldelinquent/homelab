@@ -41,9 +41,10 @@ configs:
       [global]
       e2dsa
       rproxy: 1
+      xff-src: lan
 
       [accounts]
-      admin:${COPYPARTY_ADMIN_PASSWORD}
+      admin: ${COPYPARTY_ADMIN_PASSWORD}
 
       [/]
       /data
