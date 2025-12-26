@@ -1,19 +1,4 @@
 services:
-  pihole:
-    image: pihole/pihole:latest
-    restart: unless-stopped
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-    environment:
-      TZ: 'America/Los Angeles'
-    volumes:
-      - /var/pihole:/etc/pihole
-      - /var/pihole-dnsmasq:/etc/dnsmasq.d
-  watchtower:
-    image: containrrr/watchtower:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
   restic:
     image: mazzolino/restic:latest
     restart: unless-stopped
@@ -36,13 +21,3 @@ services:
       - /var/pihole:/backup/pihole
       - /var/pihole-dnsmasq:/backup/pihole-dnsmasq
       - /var/uptime-kuma:/backup/uptime-kuma
-  uptime-kuma:
-    image: louislam/uptime-kuma:latest
-    volumes:
-      - /var/uptime-kuma:/app/data
-    restart: unless-stopped 
-networks:
-  default:
-    external: true
-    name: proxy
-

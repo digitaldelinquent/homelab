@@ -1,0 +1,50 @@
+configs:
+  caddy-config:
+    content: |
+      *.digitaldelinquency.xyz {
+          tls {
+              dns cloudflare ${CLOUDFLARE_API_TOKEN}
+          }
+
+          @pihole host pihole.digitaldelinquency.xyz 
+          handle @pihole {
+              reverse_proxy pihole:80
+          }
+
+          @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
+          handle @uptime-kuma {
+              reverse_proxy uptime-kuma:3001
+          }
+
+          @vaultw host vaultw.digitaldelinquency.xyz 
+          handle @vaultw {
+              reverse_proxy vaultwarden:80
+          }
+
+          @immich host immich.digitaldelinquency.xyz 
+          handle @immich {
+              reverse_proxy immich-server:2283
+          }
+
+          @copyparty host copyparty.digitaldelinquency.xyz 
+          handle @copyparty {
+              reverse_proxy copyparty:3923
+          }
+      }
+
+services:
+  caddy:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    environment:
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    configs:
+      - source: caddy-config
+        target: /etc/caddy/Caddyfile
+    volumes:
+      - /var/caddy/data:/data
+      - /var/caddy/config:/config

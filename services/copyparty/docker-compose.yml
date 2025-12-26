@@ -1,0 +1,27 @@
+configs:
+  copyparty-config:
+    content: |
+      [global]
+      e2dsa
+      rproxy: 1
+      xff-src: lan
+
+      [accounts]
+      admin: ${COPYPARTY_ADMIN_PASSWORD}
+
+      [/]
+      /data
+      accs:
+        rw: admin
+
+services:
+  copyparty:
+    image: copyparty/ac:latest
+    restart: unless-stopped
+    environment:
+      COPYPARTY_ADMIN_PASSWORD: ${COPYPARTY_ADMIN_PASSWORD}
+    configs:
+      - source: copyparty-config
+        target: /cfg/config.conf
+    volumes:
+      - /var/copyparty:/data
