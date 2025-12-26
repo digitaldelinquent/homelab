@@ -1,3 +1,59 @@
+configs:
+  caddy-config:
+    environment:
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    content: |
+      *.digitaldelinquency.xyz {
+          tls {
+              dns cloudflare ${CLOUDFLARE_API_TOKEN}
+          }
+
+          @pihole host pihole.digitaldelinquency.xyz 
+          handle @pihole {
+              reverse_proxy pihole:80
+          }
+
+          @uptime-kuma host uptime-kuma.digitaldelinquency.xyz 
+          handle @uptime-kuma {
+              reverse_proxy uptime-kuma:3001
+          }
+
+          @syncthing host syncthing.digitaldelinquency.xyz 
+          handle @syncthing {
+              reverse_proxy syncthing:8384
+          }
+
+          @vaultw host vaultw.digitaldelinquency.xyz 
+          handle @vaultw {
+              reverse_proxy vaultwarden:80
+          }
+
+          @immich host immich.digitaldelinquency.xyz 
+          handle @immich {
+              reverse_proxy immich-server:2283
+          }
+
+          @copyparty host copyparty.digitaldelinquency.xyz 
+          handle @copyparty {
+              reverse_proxy copyparty:3923
+          }
+      }
+  copyparty-config:
+    environment:
+      COPYPARTY_ADMIN_PASSWORD: ${COPYPARTY_ADMIN_PASSWORD}
+    content: |
+      [global]
+      e2dsa
+      rproxy: -1
+
+      [accounts]
+      admin:${COPYPARTY_ADMIN_PASSWORD}
+
+      [/]
+      /data
+      accs:
+        rw: admin
+
 services:
   caddy:
     build: ./caddy
@@ -6,12 +62,21 @@ services:
       - 80:80
       - 443:443
       - 443:443/udp
-    environment:
-      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+    configs:
+      - source: caddy-config
+        target: /etc/caddy/Caddyfile
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - /var/caddy/data:/data
       - /var/caddy/config:/config
+  copyparty:
+    image: copyparty/ac:latest
+    restart: unless-stopped
+    config:
+      - source: copyparty-config
+        target: /cfg/config.conf
+    volumes:
+      - /var/copyparty:/w
   syncthing:
     image: syncthing/syncthing:latest
     restart: unless-stopped

@@ -33,6 +33,7 @@ services:
     volumes: 
       - /var/vaultwarden:/backup/vaultw
       - /var/syncthing:/backup/syncthing
+      - /var/copyparty:/backup/copyparty
       - /var/pihole:/backup/pihole
       - /var/pihole-dnsmasq:/backup/pihole-dnsmasq
       - /var/uptime-kuma:/backup/uptime-kuma
