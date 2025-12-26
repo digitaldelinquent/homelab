@@ -47,7 +47,7 @@ configs:
       admin: ${COPYPARTY_ADMIN_PASSWORD}
 
       [/]
-      /data
+      /w
       accs:
         rw: admin
 
