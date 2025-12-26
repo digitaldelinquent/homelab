@@ -1,7 +1,5 @@
 configs:
   caddy-config:
-    environment:
-      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
     content: |
       *.digitaldelinquency.xyz {
           tls {
@@ -39,8 +37,6 @@ configs:
           }
       }
   copyparty-config:
-    environment:
-      COPYPARTY_ADMIN_PASSWORD: ${COPYPARTY_ADMIN_PASSWORD}
     content: |
       [global]
       e2dsa
@@ -62,6 +58,8 @@ services:
       - 80:80
       - 443:443
       - 443:443/udp
+    environment:
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
     configs:
       - source: caddy-config
         target: /etc/caddy/Caddyfile
@@ -72,6 +70,8 @@ services:
   copyparty:
     image: copyparty/ac:latest
     restart: unless-stopped
+    environment:
+      COPYPARTY_ADMIN_PASSWORD: ${COPYPARTY_ADMIN_PASSWORD}
     config:
       - source: copyparty-config
         target: /cfg/config.conf
