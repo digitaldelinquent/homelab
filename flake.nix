@@ -10,7 +10,7 @@
         in {
         nixosConfigurations.homelab = lib.nixosSystem {
             inherit system;
-            modules = [ ./configuration.nix ];
+            modules = [ nix/configuration.nix ];
         };
     };
 

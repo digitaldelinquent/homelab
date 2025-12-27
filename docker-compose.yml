@@ -1,0 +1,14 @@
+name: homelab-services
+include:
+  - path: 'services/caddy/docker-compose.yml'
+  - path: 'services/copyparty/docker-compose.yml'
+  - path: 'services/immich/docker-compose.yml'
+  - path: 'services/pihole/docker-compose.yml'
+  - path: 'services/restic/docker-compose.yml'
+  - path: 'services/uptime_kuma/docker-compose.yml'
+  - path: 'services/vaultwarden/docker-compose.yml'
+  - path: 'services/watchtower/docker-compose.yml'
+networks:
+  default:
+    external: true
+    name: proxy
